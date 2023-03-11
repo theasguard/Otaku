@@ -64,6 +64,7 @@ MENU_ITEMS = [
     (control.lang(50037), "anilist_all_time_voted", 'voted.png'),
     (control.lang(50009), "anilist_top_100_anime", 'top_100_anime.png'),
     (control.lang(50010), "anilist_genres", 'genres_&_tags.png'),
+    (control.lang(60000), "anilist_discover", 'discover.png'),
     (control.lang(50011), "search_history", 'search.png'),
     (control.lang(50012), "tools", 'tools.png'),
 ]
@@ -78,6 +79,42 @@ if control.ADDON_VERSION != control.getSetting('version'):
     if showchangelog == "Yes":
         control.getChangeLog()
     control.setSetting('version', control.ADDON_VERSION)
+
+@route('anilist_discover')
+def DISCOVER_MENU(payload, params):
+    DISCOVER_ITEMS = [
+        (control.lang(60001), "anilist_discover_anime", 'search.png'),
+        (control.lang(60002), "clear_discover_history", 'genres_&_tags.png'),
+    ]
+
+    return control.draw_items(
+        [utils.allocate_item(name, url, True, image) for name, url, image in DISCOVER_ITEMS],
+        contentType="addons",
+        draw_cm=False
+    )
+
+@route('anilist_discover_anime')
+def DISCOVER_ANIME_MENU(payload, params):
+    DISCOVER_ANIME_ITEMS = [
+        (control.lang(60003), "anilist_discover_search", 'search.png'),
+        (control.lang(60004), "anilist_discover_genres", 'genres_&_tags.png'),
+        (control.lang(60005), "anilist_discover_year", 'airing_anime_calendar.png'),
+        (control.lang(60006), "anilist_discover_season", 'season.png'),
+        (control.lang(60007), "anilist_discover_format", 'format.png'),
+        (control.lang(60008), "anilist_discover_airing status", 'airing_status.png'),
+        (control.lang(60009), "anilist_discover_streaming_on", 'networks.png'),
+        (control.lang(60010), "anilist_discover_country_of_origin", 'country.png'),
+        (control.lang(60011), "anilist_discover_source_material", 'source_material.png'),
+        (control.lang(60012), "anilist_discover_add_rule", 'rule.png'),
+        (control.lang(60013), "anilist_discover_clear", 'claer.png'),
+        (control.lang(60014), "anilist_discover_save", 'save.png'),
+    ]
+
+    return control.draw_items(
+        [utils.allocate_item(name, url, True, image) for name, url, image in DISCOVER_ANIME_ITEMS],
+        contentType="addons",
+        draw_cm=False
+    )
 
 
 @route('movies')

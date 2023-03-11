@@ -799,7 +799,7 @@ msgctxt "#40454"
 msgid "Finnish"
 msgstr ""
 
-######MAIN Category DIRECTORY#######
+######MAIN MENU DIRECTORY#######
 msgctxt "#50000"
 msgid "Airing Anime Calendar"
 msgstr ""
@@ -951,3 +951,172 @@ msgstr ""
 msgctxt "#50037"
 msgid "All Time Voted"
 msgstr ""
+
+######DISCOVER DIRECTORY#######
+msgctxt "#60000"
+msgid "Discover"
+msgstr ""
+
+msgctxt "#60001"
+msgid "Discover Anime"
+msgstr ""
+
+msgctxt "#60002"
+msgid "Clear Discover History"
+msgstr ""
+
+msgctxt "#60003"
+msgid "Search"
+msgstr "
+
+msgctxt "#60004"
+msgid "Genres & Tags"
+msgstr "
+
+msgctxt "#60005"
+msgid "Year"
+msgstr "
+
+msgctxt "#60006"
+msgid "Season"
+msgstr "
+
+msgctxt "#60007"
+msgid "Format"
+msgstr "
+
+msgctxt "#60008"
+msgid "Airing Status"
+msgstr "
+
+msgctxt "#60009"
+msgid "Streaming On"
+msgstr "
+
+msgctxt "#60010"
+msgid "Country Of Origin"
+msgstr "
+
+msgctxt "#60011"
+msgid "Source Material"
+msgstr "
+
+msgctxt "#60012"
+msgid "Add Rules"
+msgstr "
+
+msgctxt "#60013"
+msgid "Clear"
+msgstr "
+
+msgctxt "#60014"
+msgid "Save"
+msgstr "
+
+msgctxt "#60015"
+msgid "With Year Range"
+msgstr "
+
+msgctxt "#60016"
+msgid "Enter First Year Range"
+msgstr "
+
+msgctxt "#60017"
+msgid "Enter Second Year Range"
+msgstr "
+
+msgctxt "#60018"
+msgid "With Episodes Range"
+msgstr "
+
+msgctxt "#60019"
+msgid "Enter First Episodes Range (Max is 150)"
+msgstr "
+
+msgctxt "#60020"
+msgid "Enter Second Episodes Range (Max is 150)"
+msgstr "
+
+msgctxt "#60021"
+msgid "With Duration Range"
+msgstr "
+
+msgctxt "#60022"
+msgid "Enter First Duration Range (Max is 170)"
+msgstr "
+
+msgctxt "#60023"
+msgid "Enter Second Duration Range (Max is 170)"
+msgstr "
+
+msgctxt "#60024"
+msgid "Dougin"
+msgstr "
+
+msgctxt "#60025"
+msgid "Set Dougin Anime"
+msgstr "
+
+msgctxt "#60026"
+msgid "Would you like Dougin Anime"
+msgstr "
+
+msgctxt "#60027"
+msgid "Yes"
+msgstr "
+
+msgctxt "#60028"
+msgid "No"
+msgstr "
+
+msgctxt "#60029"
+msgid "My Anime"
+msgstr "
+
+msgctxt "#60030"
+msgid "Set My Anime"
+msgstr "
+
+msgctxt "#60031"
+msgid "Would you like Show or Hide My Anime"
+msgstr "
+
+msgctxt "#60032"
+msgid "Hide My Anime"
+msgstr "
+
+msgctxt "#60033"
+msgid "Only Show My Anime"
+msgstr "
+
+msgctxt "#60034"
+msgid "Adult"
+msgstr "
+
+msgctxt "#60035"
+msgid "Set Adult Anime"
+msgstr "
+
+msgctxt "#60036"
+msgid "Would you like Adult Anime"
+msgstr "
+
+msgctxt "#60037"
+msgid "Yes"
+msgstr "
+
+msgctxt "#60038"
+msgid "No"
+msgstr "
+
+msgctxt "#60039"
+msgid "Minimum tag percentage"
+msgstr "
+
+msgctxt "#60040"
+msgid "Enter Minimum tag percentage (Max is 100)"
+msgstr "
+
+msgctxt "#60041"
+msgid "With Sexual Content"
+msgstr "
