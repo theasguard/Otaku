@@ -105,9 +105,10 @@ def DISCOVER_ANIME_MENU(payload, params):
         (control.lang(60009), "anilist_discover_streaming_on", 'networks.png'),
         (control.lang(60010), "anilist_discover_country_of_origin", 'country.png'),
         (control.lang(60011), "anilist_discover_source_material", 'source_material.png'),
-        (control.lang(60012), "anilist_discover_add_rule", 'rule.png'),
-        (control.lang(60013), "anilist_discover_clear", 'claer.png'),
-        (control.lang(60014), "anilist_discover_save", 'save.png'),
+        (control.lang(60012), "anilist_discover_sort_by", 'sort_by.png'),
+        (control.lang(60013), "anilist_discover_add_rule", 'rule.png'),
+        (control.lang(60014), "anilist_discover_clear", 'claer.png'),
+        (control.lang(60015), "anilist_discover_save", 'save.png'),
     ]
 
     return control.draw_items(

@@ -2141,6 +2141,34 @@ class AniListBrowser():
 
         search = database.get(self.get_search_res, 0.125, variables, page)
         return self._process_anilist_view(search, "search/%s/%%d" % query, page)
+    
+    def get_discovery(self, query, genre_list, year, season, format, airing_status, sort, streaming_on, countryOfOrigin, source_material, minYear, maxYear, minEpisodes, maxEpisodes, minDuration, maxDuration, isDoujin, isAdult, tag_list, page=1):
+        variables = {
+		    'page': page,
+		    'type': "ANIME",
+            'search': query,
+            'includedGenres': genre_list,
+		    'year': year,
+		    'season': season,
+		    'format': format,
+		    'status': airing_status,
+		    'sort': sort,
+		    'licensedBy' : streaming_on,
+            'countryOfOrigin': countryOfOrigin,
+            'source': source_material,
+            'minYear': minYear,
+			'maxYear': maxYear,
+		    'minEpisodes': minEpisodes,
+		    'maxEpisodes': maxEpisodes,
+		    'minDuration': minDuration,
+		    'maxDuration': maxDuration,
+            'isDoujin': isDoujin,
+            'isAdult': isAdult,
+		    'includedTags': tag_list,
+        }
+
+        discovery = database.get(self.get_discovery_res, 0.125, variables, page)
+        return self._process_anilist_view(discovery, "discovery/%s/%%d" % query, page)
 
     def get_recommendations(self, anilist_id, page=1):
         variables = {
@@ -2348,6 +2376,128 @@ class AniListBrowser():
                     search: $search,
                     sort: $sort,
                     isAdult: $isAdult
+                ) {
+                    id
+                    idMal
+                    title {
+                        userPreferred,
+                        romaji,
+                        english
+                    }
+                    coverImage {
+                        extraLarge
+                    }
+                    bannerImage
+                    startDate {
+                        year,
+                        month,
+                        day
+                    }
+                    description
+                    synonyms
+                    format
+                    episodes
+                    status
+                    genres
+                    duration
+                    countryOfOrigin
+                    averageScore
+                    characters (
+                        page: 1,
+                        sort: ROLE,
+                        perPage: 10,
+                    ) {
+                        edges {
+                            node {
+                                name {
+                                    userPreferred
+                                }
+                            }
+                            voiceActors (language: JAPANESE) {
+                                name {
+                                    userPreferred
+                                }
+                                image {
+                                    large
+                                }
+                            }
+                        }
+                    }
+                    studios {
+                        edges {
+                            node {
+                                name
+                            }
+                        }
+                    }
+                    trailer {
+                        id
+                        site
+                    }
+                }
+            }
+        }
+        '''
+
+        result = client.request(self._URL, post={'query': query, 'variables': variables}, jpost=True)
+        results = json.loads(result)
+
+        if "errors" in results.keys():
+            return
+
+        json_res = results['data']['Page']
+        return json_res
+    
+    def get_discovery_res(self, variables, page=1):
+        query = '''
+		query (
+		    $page: Int = 1,
+		    $type: MediaType,
+            $search: String,
+		    $isAdult: Boolean = false,
+		    $isDoujin: Boolean = false,
+		    $format:[MediaFormat],
+		    $countryOfOrigin:CountryCode
+		    $season: MediaSeason,
+		    $year: FuzzyDateInt,
+		    $status: MediaStatus,
+		    $sort: [MediaSort] = [POPULARITY_DESC, SCORE_DESC],
+		    $includedGenres: [String],
+		    $includedTags: [String],
+		    $source: MediaSource,
+		    $licensedBy : String,
+            $minYear: FuzzyDateInt,
+			$maxYear: FuzzyDateInt,
+		    $minEpisodes: Int,
+		    $maxEpisodes: Int,
+		    $minDuration: Int,
+		    $maxDuration: Int
+		) {
+		    Page (page: $page, perPage: 20) {
+		        pageInfo {
+		            hasNextPage
+		        }
+		        ANIME: media (
+		            format_in: $format,
+		            type: $type,
+                    search: $search,
+		            season: $season,
+		            startDate: $year,
+		            sort: $sort,
+		            status: $status,
+		            isAdult: $isAdult,
+		            isLicensed: $isDoujin,
+		            countryOfOrigin: $countryOfOrigin,
+		            genre_in: $includedGenres,
+		            tag_in: $includedTags,
+		            source: $source,
+		            licensedBy : $licensedBy,
+       				startDate_greater: $minYear,
+       				startDate_lesser: $maxYear,
+		            episodes_greater: $minEpisodes,
+		            episodes_lesser: $maxEpisodes,
+		            duration_greater: $minDuration,
+		            duration_lesser: $maxDuration
                 ) {
                     id
                     idMal

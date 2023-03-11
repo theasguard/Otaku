@@ -1002,121 +1002,125 @@ msgid "Source Material"
 msgstr "
 
 msgctxt "#60012"
-msgid "Add Rules"
+msgid "Sort By"
 msgstr "
 
 msgctxt "#60013"
-msgid "Clear"
+msgid "Add Rules"
 msgstr "
 
 msgctxt "#60014"
-msgid "Save"
+msgid "Clear"
 msgstr "
 
 msgctxt "#60015"
-msgid "With Year Range"
+msgid "Save"
 msgstr "
 
 msgctxt "#60016"
-msgid "Enter First Year Range"
+msgid "With Year Range"
 msgstr "
 
 msgctxt "#60017"
-msgid "Enter Second Year Range"
+msgid "Enter First Year Range"
 msgstr "
 
 msgctxt "#60018"
-msgid "With Episodes Range"
+msgid "Enter Second Year Range"
 msgstr "
 
 msgctxt "#60019"
-msgid "Enter First Episodes Range (Max is 150)"
+msgid "With Episodes Range"
 msgstr "
 
 msgctxt "#60020"
-msgid "Enter Second Episodes Range (Max is 150)"
+msgid "Enter First Episodes Range (Max is 150)"
 msgstr "
 
 msgctxt "#60021"
-msgid "With Duration Range"
+msgid "Enter Second Episodes Range (Max is 150)"
 msgstr "
 
 msgctxt "#60022"
-msgid "Enter First Duration Range (Max is 170)"
+msgid "With Duration Range"
 msgstr "
 
 msgctxt "#60023"
-msgid "Enter Second Duration Range (Max is 170)"
+msgid "Enter First Duration Range (Max is 170)"
 msgstr "
 
 msgctxt "#60024"
-msgid "Dougin"
+msgid "Enter Second Duration Range (Max is 170)"
 msgstr "
 
 msgctxt "#60025"
-msgid "Set Dougin Anime"
+msgid "Dougin"
 msgstr "
 
 msgctxt "#60026"
-msgid "Would you like Dougin Anime"
+msgid "Set Dougin Anime"
 msgstr "
 
 msgctxt "#60027"
-msgid "Yes"
+msgid "Would you like Dougin Anime"
 msgstr "
 
 msgctxt "#60028"
-msgid "No"
-msgstr "
-
-msgctxt "#60029"
-msgid "My Anime"
-msgstr "
-
-msgctxt "#60030"
-msgid "Set My Anime"
-msgstr "
-
-msgctxt "#60031"
-msgid "Would you like Show or Hide My Anime"
-msgstr "
-
-msgctxt "#60032"
-msgid "Hide My Anime"
-msgstr "
-
-msgctxt "#60033"
-msgid "Only Show My Anime"
-msgstr "
-
-msgctxt "#60034"
-msgid "Adult"
-msgstr "
-
-msgctxt "#60035"
-msgid "Set Adult Anime"
-msgstr "
-
-msgctxt "#60036"
-msgid "Would you like Adult Anime"
-msgstr "
-
-msgctxt "#60037"
 msgid "Yes"
 msgstr "
 
-msgctxt "#60038"
+msgctxt "#60029"
 msgid "No"
 msgstr "
 
+msgctxt "#60030"
+msgid "My Anime"
+msgstr "
+
+msgctxt "#60031"
+msgid "Set My Anime"
+msgstr "
+
+msgctxt "#60032"
+msgid "Would you like Show or Hide My Anime"
+msgstr "
+
+msgctxt "#60033"
+msgid "Hide My Anime"
+msgstr "
+
+msgctxt "#60034"
+msgid "Only Show My Anime"
+msgstr "
+
+msgctxt "#60035"
+msgid "Adult"
+msgstr "
+
+msgctxt "#60036"
+msgid "Set Adult Anime"
+msgstr "
+
+msgctxt "#60037"
+msgid "Would you like Adult Anime"
+msgstr "
+
+msgctxt "#60038"
+msgid "Yes"
+msgstr "
+
 msgctxt "#60039"
-msgid "Minimum tag percentage"
+msgid "No"
 msgstr "
 
 msgctxt "#60040"
-msgid "Enter Minimum tag percentage (Max is 100)"
+msgid "Minimum tag percentage"
 msgstr "
 
 msgctxt "#60041"
-msgid "With Sexual Content"
+msgid "Enter Minimum tag percentage (Max is 100)"
+msgstr "
+
+msgctxt "#60042"
+msgid "Sexual Content Genres"
 msgstr "
