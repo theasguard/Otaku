@@ -61,7 +61,7 @@ class sources(BrowserBase):
                             'release_title': torrent['filename'],
                             'info': source_utils.getInfo(torrent['filename']),
                             'debrid_provider': 'real_debrid',
-                            'size': self.get_size(torrent_file['bytes'])
+                            'size': self._get_size(torrent_file['bytes'])
                         }
                     )
                     break
