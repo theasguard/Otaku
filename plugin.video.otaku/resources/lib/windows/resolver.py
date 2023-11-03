@@ -20,7 +20,7 @@ sys.path.append(control.dataPath)
 
 class Resolver(BaseWindow):
 
-    def __init__(self, xml_file, location=None, actionArgs=None):
+    def __init__(self, xml_file, location=None, actionArgs=None, source_select=False):
         try:
             super(Resolver, self).__init__(xml_file, location, actionArgs=actionArgs)
         except:
@@ -34,7 +34,9 @@ class Resolver(BaseWindow):
         self.resolvers = {'all_debrid': all_debrid.AllDebrid,
                           'debrid_link': debrid_link.DebridLink,
                           'premiumize': premiumize.Premiumize,
-                          'real_debrid': real_debrid.RealDebrid}
+                          'real_debrid': real_debrid.RealDebrid
+        }
+        self.source_select = source_select
 
     def onInit(self):
         self.resolve(self.sources, self.args, self.pack_select)
@@ -42,9 +44,8 @@ class Resolver(BaseWindow):
     def resolve(self, sources, args, pack_select=False):
 
         # last played source move to top of list
-        if len(sources) > 1:
+        if len(sources) > 1 and not self.source_select:
             last_played = control.getSetting('last_played_source')
-            control.textviewer_dialog('', last_played)
             for index, source in enumerate(sources):
                 if str(source['release_title']) == last_played:
                     sources.insert(0, sources.pop(index))
