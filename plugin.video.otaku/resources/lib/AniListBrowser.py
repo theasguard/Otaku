@@ -19,6 +19,15 @@ class AniListBrowser():
 
     def __init__(self, title_key=None):
         self._TITLE_LANG = control.title_lang(title_key) if title_key else "userPreferred"
+        if control.getSetting('contentyear.bool') == "true":
+            self.year_type = control.getSetting('contentyear.menu')
+        else:
+            self.year_type = ''
+        if control.getSetting('contentseason.bool') == "true":
+            seasons = ['WINTER', 'SPRING', 'SUMMER', 'FALL']
+            self.season_type = seasons[int(control.getSetting('contentseason.menu'))]
+        else:
+            self.season_type = ''
         if control.getSetting('contentformat.bool') == "true":
             formats = ['TV', 'MOVIE', 'TV_SHORT', 'SPECIAL', 'OVA', 'ONA', 'MUSIC']
             self.format_in_type = formats[int(control.getSetting('contentformat.menu'))]
