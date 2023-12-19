@@ -10,7 +10,7 @@ from resources.lib.ui.BrowserBase import BrowserBase
 
 
 class sources(BrowserBase):
-    _BASE_URL = 'https://animixplay.best/'
+    _BASE_URL = 'https://animixplay.fun/'
 
     def get_sources(self, anilist_id, episode, get_backup):
         show = database.get_show(anilist_id)
@@ -82,7 +82,7 @@ class sources(BrowserBase):
             mitems = mdiv.find_all('li')
             csrf_token = re.findall(r'name="csrf-token"\s*content="([^"]+)', s)[0]
             for mitem in mitems:
-                if not any(x in mitem.text for x in ['FSD', 'YTB', 'EGA']):
+                if not any(x in mitem.text for x in ['FSD', 'YTB', 'EGA, IGA']):
                     type_ = 'direct'
                     server = mitem.a.get('data-name')
                     qual = mitem.a.get('title')
