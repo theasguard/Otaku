@@ -2,12 +2,15 @@
 import base64
 
 import six
-from resources.lib.ui import client
+from resources.lib.ui import client, control
 from six.moves import urllib_parse
 
 
 class BrowserBase(object):
-    _BASE_URL = None
+    def __init__(self):
+        self._BASE_URL = None
+        self._GOGO_ALT = control.getSetting('provider.gogoalt') == 'true'
+        self._ANIMIX_ALT = control.getSetting('provider.animixalt') == 'true'
 
     @staticmethod
     def _clean_title(text):

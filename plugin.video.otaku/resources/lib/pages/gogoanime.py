@@ -11,7 +11,9 @@ from resources.lib.indexers.malsync import MALSYNC
 
 
 class sources(BrowserBase):
-    _BASE_URL = 'https://anitaku.to/'
+    def __init__(self):
+        BrowserBase.__init__(self)
+        self._BASE_URL = 'https://anitaku.to/' if self._GOGO_ALT else 'https://gogoanime3.net/'
 
     def get_sources(self, anilist_id, episode, get_backup):
         show = database.get_show(anilist_id)
