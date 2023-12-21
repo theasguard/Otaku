@@ -5,14 +5,14 @@ from functools import partial
 
 from bs4 import BeautifulSoup, SoupStrainer
 from six.moves import urllib_parse
-from resources.lib.ui import database, client
+from resources.lib.ui import control, database, client
 from resources.lib.ui.BrowserBase import BrowserBase
 
 
 class sources(BrowserBase):
     def __init__(self):
         BrowserBase.__init__(self)
-        self._BASE_URL = 'https://animixplay.fun/' if self._ANIMIX_ALT else 'https://animixplay.best/'
+        self._BASE_URL = 'https://animixplay.fun/' if control.getSetting('provider.animixalt') == 'true' else 'https://animixplay.best/'
 
     def get_sources(self, anilist_id, episode, get_backup):
         show = database.get_show(anilist_id)

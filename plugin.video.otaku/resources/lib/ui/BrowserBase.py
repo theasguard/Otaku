@@ -7,10 +7,7 @@ from six.moves import urllib_parse
 
 
 class BrowserBase(object):
-    def __init__(self):
-        self._BASE_URL = None
-        self._GOGO_ALT = control.getSetting('provider.gogoalt') == 'true'
-        self._ANIMIX_ALT = control.getSetting('provider.animixalt') == 'true'
+    _BASE_URL = None
 
     @staticmethod
     def _clean_title(text):
