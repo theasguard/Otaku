@@ -183,13 +183,10 @@ class Resolver(BaseWindow):
         else:
             self.resolve(sources, args, pack_select)
 
-
-
         if self.sources[0]['type'] == 'embed':
             control.setSetting('last_played_source', str(self.sources[0]['provider']) + " ".join(map(str, self.sources[0]['info'])))
         else:
             control.setSetting('last_played_source', str(self.sources[0]['release_title']))
-
 
         if not self.canceled:
             return self.return_data
