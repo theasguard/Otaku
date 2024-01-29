@@ -1782,7 +1782,7 @@ def SEARCH_HISTORY(payload, params):
         return control.draw_items(
             _BROWSER.search_history(stype, history),
             contentType="addons",
-            draw_cm=[('Remove Item', 'remove_search_item')]
+            draw_cm=[('Remove from History', 'remove_search_item')]
         )
     else:
         return SEARCH(payload, {'action_args': {'stype': stype}})
