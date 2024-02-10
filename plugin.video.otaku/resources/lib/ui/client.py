@@ -236,17 +236,16 @@ def request(
         except urllib_error.HTTPError as e:
             if error is True:
                 response = e
-
-            if e.info().get('Content-Encoding', '').lower() == 'gzip':
-                buf = six.BytesIO(e.read())
-                f = gzip.GzipFile(fileobj=buf)
-                result = f.read()
-                f.close()
-            else:
-                result = e.read()
-            result = result.decode('latin-1', errors='ignore') if six.PY3 else result.encode('utf-8')
             server = e.info().getheader('Server') if six.PY2 else e.info().get('Server')
-            if 'cloudflare' in server.lower():
+            if server and 'cloudflare' in server.lower():
+                if e.info().get('Content-Encoding', '').lower() == 'gzip':
+                    buf = six.BytesIO(e.read())
+                    f = gzip.GzipFile(fileobj=buf)
+                    result = f.read()
+                    f.close()
+                else:
+                    result = e.read()
+                result = result.decode('latin-1', errors='ignore') if six.PY3 else result.encode('utf-8')
                 error_code = e.code
                 if error_code == 403 and 'cf-alert-error' in result:
                     import ssl
@@ -281,13 +280,16 @@ def request(
                         control.log('%s has a Cloudflare challenge.' % (netloc))
                         if not error:
                             return ''
-            else:
+            elif output == '':
                 control.log('Request-HTTPError (%s): %s' % (response.code, url))
                 if not error:
                     return ''
         except urllib_error.URLError as e:
-            control.log('Request-Error (%s): %s' % (e.reason, url))
-            return ''
+            response = e
+            if output == '':
+                control.log('Request-Error (%s): %s' % (e.reason, url))
+                if not error:
+                    return ''
 
         if output == 'cookie':
             try:
@@ -377,7 +379,7 @@ def request(
                     break
 
         if encoding is None:
-            r = re.search(b'^#EXT|<head>|<body|<script', result, re.IGNORECASE)
+            r = re.search(b'^#EXT', result, re.IGNORECASE)
             if r:
                 encoding = 'utf8'
 
