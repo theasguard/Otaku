@@ -1,4 +1,4 @@
-This is a guide on how to host FlareSolverr locally on any windows pc.
+This is a guide on how to host FlareSolverr locally on any pc.
 
 - For Windows users
 
