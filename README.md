@@ -24,8 +24,8 @@ _or install it manually in the following order (future updates should not be ins
 
 - [context.otaku](https://github.com/Goldenfreddy0703/repository.otaku/raw/master/repo/zips/context.otaku/context.otaku-0.0.12.zip)
 - [script.otaku.themepak](https://github.com/Goldenfreddy0703/repository.otaku/raw/master/repo/zips/script.otaku.themepak/script.otaku.themepak-0.0.11.zip)
-- [script.otaku.mappings](https://github.com/Goldenfreddy0703/repository.otaku/raw/master/repo/zips/script.otaku.mappings/script.otaku.mappings-23.10.zip)
-- [plugin.video.otaku](https://github.com/Goldenfreddy0703/repository.otaku/raw/master/repo/zips/plugin.video.otaku/plugin.video.otaku-0.4.31.zip)
+- [script.otaku.mappings](https://github.com/Goldenfreddy0703/repository.otaku/raw/master/repo/zips/script.otaku.mappings/script.otaku.mappings-24.02.0.zip)
+- [plugin.video.otaku](https://github.com/Goldenfreddy0703/repository.otaku/raw/master/repo/zips/plugin.video.otaku/plugin.video.otaku-0.4.84.zip)
 
 After each update, it is recommended that you clear cache/rebuild database to make sure changes take effect.
 
@@ -42,11 +42,7 @@ If you guys are having problems with Otaku, please feel free to contact me or ta
 **_Function_**:
 - We Have Finished all of our Functional Task this Year!!!
 
-**_Optional_**: 
-- Artwork: Want to add Simkl as either a main or fallback for Fanart.
-- Artwork: Want to add an setting to replace anilist posters with simkl posters.
-	- I know this is a pointless but will provide anime titles in posters.
-	- Will help with skins that don't offer anime titles.
+**_Optional_**:
 - Embeds: A Setting category to sort your embeds.
 - Viewtypes: Want to have a Set Viewtypes options for Menu View, Anime View,and Episode View.
 - Accounts: Adding an Easy News Debrid Provider.
