@@ -40,12 +40,13 @@ If you guys are having problems with Otaku, please feel free to contact me or ta
 ## Todo List
 
 **_Function_**:
-- We Have Finished all of our Functional Task this Year!!!
+- TVDB Episode Meta. (We Manage to find an api to help us with that)
+- Watchlist Completed Indicators.
 
 **_Optional_**:
-- Embeds: A Setting category to sort your embeds.
 - Viewtypes: Want to have a Set Viewtypes options for Menu View, Anime View,and Episode View.
 - Accounts: Adding an Easy News Debrid Provider.
+- Accounts: Adding an Offcloud Debrid Provider.
 
 ## Help needed with maintaining
 
