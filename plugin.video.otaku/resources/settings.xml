@@ -119,7 +119,7 @@
 		<setting type="sep"/>
 		<setting id="provider.hianime" type="bool" label="H!Anime" default="true" />
 		<setting id="provider.hianimealt" type="bool" subsetting="true" label="H!Anime Proxies (Region Problem)" default="false" visible="eq(-1,true)" />
-		<setting id="provider.hianime_region" type="bool" subsetting="true" label="Region Subtitles (Will Override Subtitle Settings)" default="false" visible="eq(-1,true)" />
+		<setting id="provider.hianime_region" type="bool" subsetting="true" label="Region Subtitles (Will Override Subtitle Settings)" default="false" visible="eq(-2,true)" />
 
 		<!-- English Sub & Dub Embeds -->
 		<setting type="lsep" label="40505" />
