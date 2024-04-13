@@ -26,19 +26,19 @@ class SIMKLAPI:
         return response
 
     def _parse_episode_view(self, res, anilist_id, season, poster, fanart, eps_watched, update_time, tvshowtitle,
-                            filter_lang, title_disable):
-
-        url = "%s/%s/" % (anilist_id, res['episode'])
-
+                            filter_lang, title_disable, episode_number):
+    
+        url = "%s/%s/" % (anilist_id, episode_number)
+    
         if isinstance(fanart, list):
             fanart = random.choice(fanart)
         if filter_lang:
             url += filter_lang
-
+    
         title = res.get('title')
         if not title:
-            title = "Episode %s" % res["episode"]
-
+            title = "Episode %s" % episode_number
+    
         image = self.imagePath % res['img'] if res.get('img') else poster
         show_art = {}
         show_meta = database.get_show_meta(anilist_id)
@@ -55,60 +55,71 @@ class SIMKLAPI:
                 banner = show_art['banner']
             if show_art.get('landscape'):
                 landscape = show_art['landscape']
-
+    
         info = {
             'plot': res.get('description', ''),
             'title': res['title'],
             'season': season,
-            'episode': int(res['episode']),
+            'episode': episode_number,
             'tvshowtitle': tvshowtitle,
             'mediatype': 'episode'
         }
-
+    
         if eps_watched:
-            if int(eps_watched) >= res['episode']:
+            if int(eps_watched) >= episode_number:
                 info['playcount'] = 1
-
+    
         aired = ''
         try:
             info['aired'] = res['date'][:10]
             aired = res['date'][:10]
         except:
             pass
-
+    
         parsed = utils.allocate_item(title, "play/%s" % url, False, image, info, fanart, poster, cast, landscape, banner, clearart, clearlogo)
-        database._update_episode(anilist_id, season, res['episode'], '', update_time, parsed, air_date=aired)
-
+        database._update_episode(anilist_id, season, episode_number, '', update_time, parsed, air_date=aired)
+    
         if title_disable and info.get('playcount') != 1:
-            parsed['info']['title'] = 'Episode %s' % res["episode"]
+            parsed['info']['title'] = 'Episode %s' % episode_number
             parsed['info']['plot'] = "None"
-
+    
         return parsed
-
+    
     def _process_episode_view(self, anilist_id, poster, fanart, eps_watched, tvshowtitle, filter_lang, title_disable):
         from datetime import date
         update_time = date.today().isoformat()
         all_results = []
         result = database.get(self.get_anime_info, 6, anilist_id)
         result_ep = database.get(self.get_anilist_meta, 6, anilist_id)
-
+    
         season = result.get('season') if result else '1'
-
+    
         sync_data = SyncUrl().get_anime_data(anilist_id, 'Anilist')
         s_id = utils.get_season(sync_data[0]) if sync_data else None
         season = s_id[0] if s_id else 1
-
+    
         season = int(season)
         database._update_season(anilist_id, season)
-
+    
         result_ep = [x for x in result_ep if x['type'] == 'episode']
-
-        mapfunc = partial(self._parse_episode_view, anilist_id=anilist_id, season=season, poster=poster, fanart=fanart,
-                          eps_watched=eps_watched, filter_lang=filter_lang, update_time=update_time,
-                          tvshowtitle=tvshowtitle, title_disable=title_disable)
-        all_results = list(map(mapfunc, result_ep))
-
+    
+        # Fetch the episode range from the database
+        episode_range = database.get_global_episodes(anilist_id)
+        if episode_range:
+            start_episode, end_episode = map(int, episode_range.split('-'))
+        else:
+            start_episode, end_episode = 1, len(result_ep)
+    
+        episode_numbers = list(range(start_episode, end_episode + 1))
+    
+        for episode_number, res in zip(episode_numbers, result_ep):
+            mapfunc = partial(self._parse_episode_view, anilist_id=anilist_id, season=season, poster=poster, fanart=fanart,
+                              eps_watched=eps_watched, filter_lang=filter_lang, update_time=update_time,
+                              tvshowtitle=tvshowtitle, title_disable=title_disable, episode_number=episode_number)
+            all_results.append(mapfunc(res))
+    
         return all_results
+    
 
     def _append_episodes(self, anilist_id, episodes, eps_watched, poster, fanart, tvshowtitle, filter_lang,
                          title_disable):
