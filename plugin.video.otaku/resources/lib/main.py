@@ -2441,26 +2441,27 @@ def TMDB_HELPER(payload, params):
         return
 
     else:
-        from resources.lib.indexers.tmdb import TMDBAPI
-        tvdb_id = TMDBAPI().get_tvdb_id(tmdb_id, season_number)
+        tvdb_id = database.get_mapping(tmdb_id=tmdb_id).get('thetvdb_id')
+        if not tvdb_id:
+            from resources.lib.indexers.tmdb import TMDBAPI
+            tvdb_id = TMDBAPI().get_tvdb_id(tmdb_id, season_number)
 
         if tvdb_id is None:
             control.notify('No TVDB_ID Found, Might not be in the TMDB Database')
             return
 
-        from resources.lib.indexers.tvdb import TVDBAPI
-        data = TVDBAPI().get_seasons(tvdb_id)
-        series_id = data['seriesId']
-        total_episodes = data['episodes'][-1]['number']
-        mid_episode_number = total_episodes // 2
+        # from resources.lib.indexers.tvdb import TVDBAPI
+        # data = TVDBAPI().get_series(tvdb_id)
+        # series_id = data['seriesId']
+        # total_episodes = data['episodes'][-1]['number']
+        # mid_episode_number = total_episodes // 2
 
-        # Task 7: Use seriesId and season_number to get the anilist id from our database
-        tvdb_id = series_id
+        # # Task 7: Use seriesId and season_number to get the anilist id from our database
+        # tvdb_id = series_id
         tvdb_season = season_number
 
         # Check if both mappings return a result and if they match
         mapping = database.get_tmdb_helper_mapping(tvdb_id=tvdb_id, tvdb_season=tvdb_season)
-        control.log('Mapping is {}'.format(repr(mapping)), level='info')
         if mapping is not None:
             anilist_id = mapping['anilist_id']
         else:
@@ -2477,15 +2478,15 @@ def TMDB_HELPER(payload, params):
             PLAY(playload, params)
 
         # If there's more than one anilist_id, use the appropriate one based on episode_number
-        elif len(anilist_id) > 1:
-            if action_args['episode'] <= mid_episode_number:
-                playload = '%s/%s/' % (anilist_id[0], action_args['episode'])
-                PLAY(playload, params)
-            else:
-                # Adjust the episode number to start from 1 for the second part
-                adjusted_episode_number = action_args['episode'] - mid_episode_number
-                playload = '%s/%s/' % (anilist_id[1], adjusted_episode_number)
-                PLAY(playload, params)
+        # elif len(anilist_id) > 1:
+        #     if action_args['episode'] <= mid_episode_number:
+        #         playload = '%s/%s/' % (anilist_id[0], action_args['episode'])
+        #         PLAY(playload, params)
+        #     else:
+        #         # Adjust the episode number to start from 1 for the second part
+        #         adjusted_episode_number = action_args['episode'] - mid_episode_number
+        #         playload = '%s/%s/' % (anilist_id[1], adjusted_episode_number)
+        #         PLAY(playload, params)
         else:
             control.notify('No Anilist ID Found, Might be a special or not in database')
             return

@@ -231,15 +231,15 @@ def select_dialog(title, dialog_list):
 
 def get_view_type(viewtype):
     viewtypes = {
-        '0': 50, # Default
-        '1': 51, # Poster
-        '2': 52, # Icon Wall
-        '3': 53, # Shift
-        '4': 54, # Info Wall
-        '5': 55, # Wide List
-        '6': 500, # Wall
-        '7': 501, # Banner
-        '8': 502 # Fanart
+        '0': 50,  # Default
+        '1': 51,  # Poster
+        '2': 52,  # Icon Wall
+        '3': 53,  # Shift
+        '4': 54,  # Info Wall
+        '5': 55,  # Wide List
+        '6': 500,  # Wall
+        '7': 501,  # Banner
+        '8': 502  # Fanart
     }
     return viewtypes[viewtype]
 

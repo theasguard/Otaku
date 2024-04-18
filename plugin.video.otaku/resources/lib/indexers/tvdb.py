@@ -46,3 +46,8 @@ class TVDBAPI:
         url = 'seasons/{}/extended'.format(tvdb_id)
         data = self.get_request(url)
         return data
+
+    def get_series(self, tvdb_id):
+        url = 'series/{}/extended'.format(tvdb_id)
+        data = self.get_request(url)
+        return data
