@@ -64,7 +64,7 @@ class sources(BrowserBase):
         ]
 
         regex = r'\b(?:s|season|series)\s*(\d+)\b(?:episode|ep|eps)\s*(\d+)'
-        regex_ep = r'\b(?:e|ep|eps|episode)\s*(\d{1,3})\b'
+        regex_ep = r'\b(?:e|ep|eps|episode)\s*(\d{1,4})\b'
         rex = re.compile(regex)
         rex_ep = re.compile(regex_ep)
         filtered_list = []
@@ -77,7 +77,7 @@ class sources(BrowserBase):
                 ep_match = rex_ep.findall(title)
                 ep_match = list(map(int, list(filter(None, itertools.chain(*ep_match)))))
                 if ep_match and ep_match[0] != int(episode):
-                    regex_ep_range = r'\s(?:\d+(?:-~\d+)?)(?:-(?:\d+(?:-~\d+)?))?'
+                    regex_ep_range = r'\s(?:\d+(?:-~\d+)?)(?:-(?:\d+(?:[-~]\d+)?))?'
                     rex_ep_range = re.compile(regex_ep_range)
                     if not rex_ep_range.search(title):
                         continue
@@ -169,9 +169,8 @@ class sources(BrowserBase):
         sources = self._get_episode_sources(query, anilist_id, episode, status, rescrape)
 
         if not sources and ':' in query:
-            pattern = r'\|?.+?:([^|]+)'
-            q1, q2 = re.findall(pattern, query)
-            query2 = '({0})|({1})'.format(q1, q2)
+            q1, q2 = (q[1:-1].split(':')[0] for q in query.split('|'))'
+            query2 = f"({q1})|({q2})"
             sources = self._get_episode_sources(query2, anilist_id, episode, status, rescrape)
 
         if not sources:
