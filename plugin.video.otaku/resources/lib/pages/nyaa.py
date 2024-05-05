@@ -77,7 +77,7 @@ class sources(BrowserBase):
                 ep_match = rex_ep.findall(title)
                 ep_match = list(map(int, list(filter(None, itertools.chain(*ep_match)))))
                 if ep_match and ep_match[0] != int(episode):
-                    regex_ep_range = r'\s(?:\d+(?:-~\d+)?)(?:-(?:\d+(?:[-~]\d+)?))?'
+                    regex_ep_range = r'\s(?:\d+(?:[-~]\d+)?)(?:-(?:\d+(?:[-~]\d+)?))?'
                     rex_ep_range = re.compile(regex_ep_range)
                     if not rex_ep_range.search(title):
                         continue
