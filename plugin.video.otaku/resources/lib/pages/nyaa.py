@@ -169,7 +169,7 @@ class sources(BrowserBase):
         sources = self._get_episode_sources(query, anilist_id, episode, status, rescrape)
 
         if not sources and ':' in query:
-            q1, q2 = (q[1:-1].split(':')[0] for q in query.split('|'))'
+            q1, q2 = (q[1:-1].split(':')[0] for q in query.split('|'))
             query2 = f"({q1})|({q2})"
             sources = self._get_episode_sources(query2, anilist_id, episode, status, rescrape)
 
